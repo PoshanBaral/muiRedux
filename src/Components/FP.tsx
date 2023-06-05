@@ -9,9 +9,10 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
-export const FrontPage = () => {
+export const FP = () => {
   return (
     <>
       <Box
@@ -22,52 +23,44 @@ export const FrontPage = () => {
         }}
       >
         <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Box width={"300px"}>
+          <Grid item xs={12} sm={6} md={3}>
+            <Box>
               <Card>
                 <CardMedia
                   sx={{
                     height: "180px",
-                    width: "300px",
                   }}
                   component="img"
                   image="https://img.freepik.com/premium-photo/blob-shape-organic-boho-style-acidic-background-with-distorted-texture-blotch-shape-fluid-dynamical-colored-forms-generated-ai_1423-11077.jpg?w=740"
-                ></CardMedia>
-
-                <CardContent
-                  sx={{
-                    height: "190px",
-                  }}
-                >
+                />
+                <CardContent>
                   <Typography gutterBottom variant="h3">
-                    {" "}
-                    Top Sale Collection{" "}
+                    Top Sale Collection
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    {" "}
-                    Best Lighting Collection{" "}
+                    Best Lighting Collection
                   </Typography>
-
-                  <CardActions>
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                      endIcon={<ArrowRightAltIcon />}
-                    >
-                      SHOP NOW
-                    </Button>
-                  </CardActions>
                 </CardContent>
+                <CardActions>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    endIcon={<ArrowRightAltIcon />}
+                  >
+                    SHOP NOW
+                  </Button>
+                </CardActions>
               </Card>
             </Box>
           </Grid>
-          <Grid item xs={3}>
-            <Box width={"300px"}>
+          
+          <Grid item xs={12} sm={6} md={3}>
+             <Box >
               <Card>
                 <CardMedia
                   sx={{
                     height: "200px",
-                    width: "300px",
+                  
                   }}
                   component="img"
                   image="https://img.freepik.com/premium-photo/ai-generated-photo-golden-lines-green-wallpaper-table-chair-vase-with-minimalist-style_812649-780.jpg?w=740"
@@ -100,13 +93,13 @@ export const FrontPage = () => {
               </Card>
             </Box>
           </Grid>
-          <Grid item xs={3}>
-            <Box width={"300px"}>
+          <Grid item xs={12} sm={6} md={3}>
+             <Box>
               <Card>
                 <CardMedia
                   sx={{
                     height: "200px",
-                    width: "300px",
+                  
                   }}
                   component="img"
                   image="https://img.freepik.com/free-vector/cosmectic-elements-collection-watercolor-style_23-2147829325.jpg?size=626&ext=jpg&ga=GA1.2.2135726082.1684822524&semt=sph"
@@ -136,13 +129,13 @@ export const FrontPage = () => {
               </Card>
             </Box>
           </Grid>
-          <Grid item xs={3}>
-            <Box width={"300px"} mb={2}>
+          <Grid item xs={12} sm={6} md={3}>
+            <Box >
               <Card>
                 <CardMedia
                   sx={{
                     height: "200px",
-                    width: "300px",
+                 
                   }}
                   component="img"
                   image="https://img.freepik.com/free-photo/modern-stationary-collection-arrangement_23-2149309652.jpg?w=740&t=st=1684996789~exp=1684997389~hmac=3b341ec7bd442058bd3c2620017c7e215feaa7e39fe7a27997ef06e26980c085"

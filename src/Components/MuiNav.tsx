@@ -17,14 +17,23 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useState } from "react";
 
+const menuItems = [
+  { label: "HOME", onClick: () => alert("Clicked HOME") },
+  { label: "SHOP", onClick: () => alert("Clicked SHOP") },
+  { label: "PRODUCT", onClick: () => alert("Clicked PRODUCT") },
+  // Add more menu items as needed
+];
+
 export const MuiNav = () => {
-  const [anchorE1, setAnchorE1] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorE1);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorE1(event.currentTarget);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event:any) => {
+    setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
-    setAnchorE1(null);
+    setAnchorEl(null);
   };
 
   return (
@@ -37,36 +46,17 @@ export const MuiNav = () => {
           Shopping Palace
         </Typography>
         <Stack direction="row" spacing={2}>
-          <Button
-            onClick={() => {
-              alert("clicked");
-            }}
-            variant="text"
-            color="inherit"
-            endIcon={<KeyboardArrowDownRoundedIcon />}
-          >
-            HOME
-          </Button>
-          <Button
-            onClick={() => {
-              alert("clicked");
-            }}
-            variant="text"
-            color="inherit"
-            endIcon={<KeyboardArrowDownRoundedIcon />}
-          >
-            SHOP
-          </Button>
-          <Button
-            onClick={() => {
-              alert("clicked");
-            }}
-            variant="text"
-            color="inherit"
-            endIcon={<KeyboardArrowDownRoundedIcon />}
-          >
-            PRODUCT
-          </Button>
+          {menuItems.map((item, index) => (
+            <Button
+              key={index}
+              onClick={item.onClick}
+              variant="text"
+              color="inherit"
+              endIcon={<KeyboardArrowDownRoundedIcon />}
+            >
+              {item.label}
+            </Button>
+          ))}
           <Button
             color="inherit"
             id="pages-button"
@@ -128,7 +118,7 @@ export const MuiNav = () => {
 
         <Menu
           id="pages-menu"
-          anchorEl={anchorE1}
+          anchorEl={anchorEl}
           open={open}
           MenuListProps={{
             "aria-labelledby": "pages-button",
@@ -143,9 +133,9 @@ export const MuiNav = () => {
             horizontal: "right",
           }}
         >
-          <MenuItem onClick={handleClose}> About Us </MenuItem>
-          <MenuItem onClick={handleClose}> Contact Us </MenuItem>
-          <MenuItem onClick={handleClose}> Login </MenuItem>
+          <MenuItem onClick={handleClose}>About Us</MenuItem>
+          <MenuItem onClick={handleClose}>Contact Us</MenuItem>
+          <MenuItem onClick={handleClose}>Login</MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>

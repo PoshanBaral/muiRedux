@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar } from "./Components/Navbar";
 import { MuiNav } from "./Components/MuiNav";
-import { FrontPage } from "./Components/FrontPage";
+import { FP } from "./Components/FP";
 import { Footer } from "./Components/Footer";
 import AxiosIndex from "./Components/Axios/AxiosIndex";
 
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Navbar />
       <MuiNav />
-      <FrontPage />
+      <FP />
       <AxiosIndex />
       <Footer />
     </div>

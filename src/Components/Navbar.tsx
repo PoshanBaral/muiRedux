@@ -1,12 +1,10 @@
 import React from "react";
 import { Grid, Button, Box, Paper } from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
 import CallIcon from "@mui/icons-material/Call";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-
-import { Login } from "./Login";
 import { LangDropdown } from "./LangDropdown";
 import { CurrenDropdown } from "./CurrenDropdown";
+import Login from "./Login";
 
 export const Navbar = () => {
   return (
@@ -47,17 +45,26 @@ export const Navbar = () => {
         </Grid>
 
         <Grid item xs={1}>
-          ABOUT US
-        </Grid>
-
-        <Grid item xs={1}>
-          CONTACT US
-        </Grid>
-
-        <Grid item xs={1}>
-          <Button variant="text" color="inherit" startIcon={<PersonIcon />}>
-            <Login />
+           <Button
+            variant="text"
+            color="inherit"
+            
+          >
+          About Us 
           </Button>
+        </Grid>
+
+        <Grid item xs={1}>
+         <Button
+            variant="text"
+            color="inherit"
+          >
+           Contact Us 
+          </Button>
+        </Grid>
+
+        <Grid item xs={1}>
+          <Login />
         </Grid>
       </Grid>
     </Paper>

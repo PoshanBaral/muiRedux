@@ -1,3 +1,4 @@
+    import React from "react";
 import {
   Button,
   Dialog,
@@ -6,34 +7,50 @@ import {
   DialogActions,
   Box,
   TextField,
+  Typography,
 } from "@mui/material";
 import { Formik, Form, Field } from "formik";
 import { useState } from "react";
 import { object, string } from "yup";
+import PersonIcon from "@mui/icons-material/Person";
 
-export const Login = () => {
+
+const Login = () => {
   const [open, setOpen] = useState(false);
 
-  const initalValues = {
+  const initialValues = {
     email: "",
     name: "",
     password: "",
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+    const handleSubmit = (values:any, { resetForm }: { resetForm: () => void }) => {
+    console.log(values);
+    resetForm();
+    setOpen(false);
+  };
+
   return (
     <>
-      <Box>
-        <Button onClick={() => setOpen(true)}> Log In </Button>
+       <Button variant="text" color="inherit" startIcon={<PersonIcon />}>
+      <Box display="flex" justifyContent="center" alignItems="center" >
+        <Button variant="contained" color="inherit" onClick={() => setOpen(true)}>LogIn</Button>
         <Dialog
           open={open}
-          onClose={() => setOpen(false)}
+          onClose={handleClose}
           aria-labelledby="dialog-title"
           aria-describedby="dialog-description"
         >
-          <DialogTitle id="dialog-title">Log In </DialogTitle>
+          <DialogTitle id="dialog-title">
+            <Typography variant="h5">Log In</Typography>
+          </DialogTitle>
           <DialogContent>
             <Formik
-              initialValues={initalValues}
+              initialValues={initialValues}
               validationSchema={object({
                 email: string()
                   .required("Please enter email")
@@ -45,58 +62,55 @@ export const Login = () => {
                   .required("Please enter password")
                   .min(7, "Password should be minimum 7 characters long"),
               })}
-              onSubmit={(values, formikHelpers) => {
-                console.log(values);
-                formikHelpers.resetForm();
-              }}
+              onSubmit={handleSubmit}
             >
               {({ errors, isValid, touched, dirty }) => (
                 <Form>
-                  <Field
-                    name="email"
-                    type="email"
-                    as={TextField}
-                    variant="outlined"
-                    color="primary"
-                    label="Email"
-                    fullWidth
-                    error={Boolean(errors.email) && Boolean(touched.email)}
-                    helperText={Boolean(touched.email) && errors.email}
-                  />
-                  <Box height={50} />
-
-                  <Field
-                    name="name"
-                    type="name"
-                    as={TextField}
-                    variant="outlined"
-                    color="primary"
-                    label="Name"
-                    fullWidth
-                    error={Boolean(errors.name) && Boolean(touched.name)}
-                    helperText={Boolean(touched.name) && errors.name}
-                  />
-                  <Box height={14} />
-                  <Field
-                    name="password"
-                    type="password"
-                    as={TextField}
-                    variant="outlined"
-                    color="primary"
-                    label="Password"
-                    fullWidth
-                    error={
-                      Boolean(errors.password) && Boolean(touched.password)
-                    }
-                    helperText={Boolean(touched.password) && errors.password}
-                  />
-                  <Box height={14} />
-
+                  <Box marginBottom={2}>
+                    <Field
+                      name="email"
+                      type="email"
+                      as={TextField}
+                      variant="outlined"
+                      color="primary"
+                      label="Email"
+                      fullWidth
+                      error={Boolean(errors.email) && Boolean(touched.email)}
+                      helperText={Boolean(touched.email) && errors.email}
+                    />
+                  </Box>
+                  <Box marginBottom={2}>
+                    <Field
+                      name="name"
+                      type="name"
+                      as={TextField}
+                      variant="outlined"
+                      color="primary"
+                      label="Name"
+                      fullWidth
+                      error={Boolean(errors.name) && Boolean(touched.name)}
+                      helperText={Boolean(touched.name) && errors.name}
+                    />
+                  </Box>
+                  <Box marginBottom={2}>
+                    <Field
+                      name="password"
+                      type="password"
+                      as={TextField}
+                      variant="outlined"
+                      color="primary"
+                      label="Password"
+                      fullWidth
+                      error={Boolean(errors.password) && Boolean(touched.password)}
+                      helperText={Boolean(touched.password) && errors.password}
+                    />
+                  </Box>
                   <Button
                     type="submit"
                     variant="contained"
                     color="primary"
                     size="large"
+                    fullWidth
                     disabled={!isValid || !dirty}
                   >
                     Sign In
@@ -106,13 +120,13 @@ export const Login = () => {
             </Formik>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => setOpen(false)}>Cancel</Button>
-            <Button onClick={() => setOpen(false)} autoFocus>
-              Submit
-            </Button>
+            <Button onClick={handleClose}>Cancel</Button>
           </DialogActions>
         </Dialog>
-      </Box>
+        </Box>
+         </Button>
     </>
   );
 };
+
+export default Login;
